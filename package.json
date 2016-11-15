@@ -1,0 +1,26 @@
+{
+  "name": "react-redux-starter",
+  "version": "1.0.0",
+  "description": "Boilerplate project to get started with react + redux development. Uses webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --colors",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anubhavmisra/react-redux-starter.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "webpack",
+    "boilerplate"
+  ],
+  "author": "Anubhav Misra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anubhavmisra/react-redux-starter/issues"
+  },
+  "homepage": "https://github.com/anubhavmisra/react-redux-starter#readme"
+}
