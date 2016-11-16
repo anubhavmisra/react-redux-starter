@@ -6,3 +6,9 @@ git clone https://github.com/anubhavmisra/react-redux-starter.git
 
 #What it includes?
 <<TBD>>
+
+react
+readux
+bootstrap
+webpack
+babel
