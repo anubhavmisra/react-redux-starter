@@ -31,8 +31,8 @@ git clone https://github.com/anubhavmisra/react-redux-starter.git <i>your-projec
 ## Routes and starter app structure
 
 - Landing (/)(App)
-    - IndexPage (IndexComponent)
-    - SampleForm (/sampleform) (SampleForm)
+    - IndexPage (IndexComponent) : Pulls a list of blog posts from https://jsonplaceholder.typicode.com/posts
+    - SampleForm (/sampleform) (SampleForm) : Posts to https://jsonplaceholder.typicode.com/posts
 
 ## How to deploy (In Progress)
 Copy /public directory to the host of your choice.

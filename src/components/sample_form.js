@@ -1,41 +1,57 @@
-import React, { Component } from 'react';
+import _ from 'lodash';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { submitForm } from '../actions';
 
+const FIELDS = {
+    field1: {
+        type: 'input',
+        title: 'Field 1'
+    },
+    field2: {
+        type: 'input',
+        title: 'Field 2'
+    },
+    field3: {
+        type: 'textarea',
+        title: 'Field 2'
+    }
+}
+
 class SampleForm extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    }
     onSubmit(props) {
         this.props.submitForm(props)
             .then(() => {
-                console.log("Form Submitted with success");
+                console.log('Form Submitted with success');
+                this.context.router.push('/')
             });
     }
+    renderField(fieldConfig, field) {
+        const fieldHelper = this.props.fields[field];
+        return (
+            <div key={field} className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : ''}`} >
+                <label>{fieldConfig.title}</label>
+                <fieldConfig.type className="form-control" type="text" {...fieldHelper} />
+                <div className="text-help">
+                    {fieldHelper.touched ? fieldHelper.error : ''}
+                </div>
+            </div>
+        );
+    }
+
     render() {
-        const {fields: {field1, field2, field3}, handleSubmit} = this.props;
+        const {handleSubmit} = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <h3>Sample Form</h3>
-                <div className={`form-group ${field1.touched && field1.invalid ? 'has-danger' : ''}`} >
-                    <label>Sample field 1</label>
-                    <input className="form-control" type="text" {...field1} />
-                    <div className="text-help">
-                        {field1.touched ? field1.error : ''}
-                    </div>
-                </div>
-                <div className={`form-group ${field2.touched && field2.invalid ? 'has-danger' : ''}`} >
-                    <label>Sample field 2</label>
-                    <input className="form-control" type="text" {...field2} />
-                    <div className="text-help">
-                        {field2.touched ? field2.error : ''}
-                    </div>
-                </div>
-                <div className={`form-group ${field3.touched && field3.invalid ? 'has-danger' : ''}`} >
-                    <label>Sample field 3</label>
-                    <input className="form-control" type="text" {...field3} />
-                    <div className="text-help">
-                        {field3.touched ? field3.error : ''}
-                    </div>
-                </div>
+
+                {_.map(FIELDS, this.renderField.bind(this))}
                 <button className="btn btn-primary" type="submit">Submit Form</button>
+                <Link to="/" className="btn btn-danger">Cancel</Link>
             </form >
         );
     }
@@ -43,20 +59,16 @@ class SampleForm extends Component {
 
 function validate(values) {
     const errors = {};
-    if (!values.field1) {
-        errors.field1 = 'Please enter field 1';
-    }
-    if (!values.field2) {
-        errors.field2 = 'Please enter field 2';
-    }
-    if (!values.field3) {
-        errors.field3 = 'Please enter field 3';
-    }
+    _.each(FIELDS, (type, field) => {
+        if (!values[field]) {
+            errors[field] = `Enter ${field}`;
+        }
+    });
     return errors;
 }
 export default reduxForm({
     form: 'SampleForm',
-    fields: ['field1', 'field2', 'field3'],
+    fields: _.keys(FIELDS),
     validate
 
 }, null, { submitForm })(SampleForm);

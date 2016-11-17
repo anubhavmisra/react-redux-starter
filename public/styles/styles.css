@@ -4,3 +4,6 @@
 .app h1,h3{
     text-align: center;
 }
+form a{
+    margin-left: 5px;
+}
