@@ -30,9 +30,9 @@ git clone https://github.com/anubhavmisra/react-redux-starter.git <i>your-projec
 
 ## Routes and starter app structure
 
-Landing (/)(App)
-IndexPage (IndexComponent)
-SampleForm /SampleForm
+- Landing (/)(App)
+    - IndexPage (IndexComponent)
+    - SampleForm (/sampleform) (SampleForm)
 
 ## How to deploy (In Progress)
 Copy /public directory to the host of your choice.
