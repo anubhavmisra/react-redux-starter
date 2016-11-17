@@ -27,7 +27,17 @@ git clone https://github.com/anubhavmisra/react-redux-starter.git <i>your-projec
 - Containers with redux
 - Routing with react-router
 - Styling with bootstrap
-    
+
+## Routes and starter app structure
+
+Landing (/)(App)
+IndexPage (IndexComponent)
+SampleForm /SampleForm
+
+## How to deploy (In Progress)
+Copy /public directory to the host of your choice.
+We 
+
 ## Dependencies
 Please refer package.json
 

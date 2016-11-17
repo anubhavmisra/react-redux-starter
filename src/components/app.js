@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 export default class App extends Component {
     render() {
         return (
-            <div>
-                Boilerplate is working
-                {this.props.children}
+            <div className="app">
+                <h1>Your React App</h1>
+                <div className="container">
+                    {this.props.children}
+                </div>
             </div>
         );
     }

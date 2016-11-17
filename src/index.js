@@ -17,4 +17,4 @@ ReactDOM.render(
       history={browserHistory}
       />
   </Provider>
-  , document.querySelector('.container'));
+  , document.getElementById('app'));
