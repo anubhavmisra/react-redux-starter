@@ -36,7 +36,6 @@ git clone https://github.com/anubhavmisra/react-redux-starter.git <i>your-projec
 
 ## How to deploy (In Progress)
 Copy /public directory to the host of your choice.
-We 
 
 ## Dependencies
 Please refer package.json
